@@ -4,6 +4,20 @@
 ![aws-cli](https://raw.githubusercontent.com/rohit-mohanta/devops-project/main/Attachments/aws-cli.png)
 - S3 bucket as Terraform backend.
 
+[The code is here](Terraform/state.tf)
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 provider "aws" {
 	region = "us-east-1"
