@@ -4,7 +4,7 @@
 ![[aws-cli.png]]
 - S3 bucket as Terraform backend.
 
-```JSON
+```
 provider "aws" {
 	region = "us-east-1"
 }
