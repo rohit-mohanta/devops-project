@@ -7,7 +7,7 @@
 - S3 bucket as Terraform backend. Here is the terraform [config file. ](Terraform/state.tf)
 ## Sub-task 2
 
-- This is the file structure of my terraform codebase.
+- This is the file structure of my [terraform codebase](Terraform).
 - I have created modules for nat-gateway, security groups and vpc
 
 ```bash
