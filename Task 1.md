@@ -1,7 +1,7 @@
 ## Sub-task 1
 
 - AWS CLI is installed and configured with full access.
-![aws-cli](https://raw.githubusercontent.com/rohit-mohanta/devops-project/main/Attachments/aws-cli-version.png)
+![aws-cli](https://raw.githubusercontent.com/rohit-mohanta/devops-project/main/Attachments/aws-cli.png)
 - S3 bucket as Terraform backend.
 
 ```
