@@ -1,17 +1,15 @@
-/* provider "aws" {
+provider "aws" {
     region = "us-east-1"
 }
- */
 
-/* resource "aws_s3_bucket" "terraform-state" {
+resource "aws_s3_bucket" "terraform-state" {
     bucket = "terraform-state-rohit-456"
 
 /*     lifecycle {
       prevent_destroy = true
     } */
-#}
- #*/
-/* resource "aws_s3_bucket_versioning" "versioning" {
+}
+resource "aws_s3_bucket_versioning" "versioning" {
       bucket = aws_s3_bucket.terraform-state.id
       versioning_configuration {
         status = "Enabled"
@@ -29,12 +27,12 @@ resource "aws_dynamodb_table" "terraform-locks" {
     }
   
 }
- */
-/* terraform {
+
+terraform {
   backend "s3" {
     bucket = "terraform-state-rohit-456"
     key = "global/s3/terraform.tfstate"
     region = "us-east-1"
     dynamodb_table = "terraform-state-locking"
   }
-} */
+}
