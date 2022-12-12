@@ -1,0 +1,184 @@
+Started by user Rohit Mohanta
+Obtained jenkinsfile from git https://github.com/rohit-mohanta/course-project
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on local-system in /home/rohitmohanta/Desktop/upgrad/workspace/node-job
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Fetching changes from the remote Git repository
+ > /usr/bin/git rev-parse --resolve-git-dir /home/rohitmohanta/Desktop/upgrad/workspace/node-job/.git # timeout=10
+ > /usr/bin/git config remote.origin.url https://github.com/rohit-mohanta/course-project # timeout=10
+Fetching upstream changes from https://github.com/rohit-mohanta/course-project
+ > /usr/bin/git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > /usr/bin/git fetch --tags --force --progress -- https://github.com/rohit-mohanta/course-project +refs/heads/*:refs/remotes/origin/* # timeout=10
+Checking out Revision 9656b54d86286c8e50f7af273202d760d3c053a3 (refs/remotes/origin/main)
+ > /usr/bin/git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f 9656b54d86286c8e50f7af273202d760d3c053a3 # timeout=10
+Commit message: "updated jenkinsfile"
+ > /usr/bin/git rev-list --no-walk 03d0dade1b59009d2ab953cc41e21ccafb77674f # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (pull)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+Welcome to Ubuntu 20.04.5 LTS (GNU/Linux 5.15.0-1019-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Mon Dec 12 11:41:53 UTC 2022
+
+  System load:  0.0               Processes:                112
+  Usage of /:   39.9% of 7.57GB   Users logged in:          1
+  Memory usage: 36%               IPv4 address for docker0: 172.17.0.1
+  Swap usage:   0%                IPv4 address for eth0:    10.0.1.228
+
+
+70 updates can be applied immediately.
+52 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+New release '22.04.1 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+fatal: destination path 'course-project' already exists and is not an empty directory.
+total 46M
+drwxr-xr-x 3 ubuntu ubuntu 4.0K Dec  9 18:48 aws
+-rw-rw-r-- 1 ubuntu ubuntu  46M Dec 12 11:22 awscliv2.zip
+drwxrwxr-x 4 ubuntu ubuntu 4.0K Dec 12 11:32 course-project
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (build)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+Welcome to Ubuntu 20.04.5 LTS (GNU/Linux 5.15.0-1019-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Mon Dec 12 11:42:10 UTC 2022
+
+  System load:  0.0               Processes:                112
+  Usage of /:   39.9% of 7.57GB   Users logged in:          1
+  Memory usage: 36%               IPv4 address for docker0: 172.17.0.1
+  Swap usage:   0%                IPv4 address for eth0:    10.0.1.228
+
+
+70 updates can be applied immediately.
+52 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+New release '22.04.1 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+Sending build context to Docker daemon   5.12kB
+
+Step 1/7 : FROM node:alpine
+ ---> 9b78801b4058
+Step 2/7 : WORKDIR /usr/src/app
+ ---> Using cache
+ ---> 824f9b6339bd
+Step 3/7 : COPY package*.json ./
+ ---> Using cache
+ ---> 3d09c831c387
+Step 4/7 : RUN npm install
+ ---> Using cache
+ ---> 72b24e65285a
+Step 5/7 : COPY . .
+ ---> Using cache
+ ---> 2e08b873a79f
+Step 6/7 : EXPOSE 8080
+ ---> Using cache
+ ---> 166e6c088799
+Step 7/7 : CMD [ "node", "server.js" ]
+ ---> Using cache
+ ---> 1954b426f4e2
+Successfully built 1954b426f4e2
+Successfully tagged node-app:latest
+The push refers to repository [public.ecr.aws/e3u3y5v0/rohit-456-repo]
+48f39c1ca044: Preparing
+73816d23f2f3: Preparing
+7f82bcd77a4b: Preparing
+796e81d1aed1: Preparing
+5957ac8a40f1: Preparing
+7ae7e09dbb66: Preparing
+a3ecf5a1df9e: Preparing
+e5e13b0c77cb: Preparing
+7ae7e09dbb66: Waiting
+a3ecf5a1df9e: Waiting
+e5e13b0c77cb: Waiting
+5957ac8a40f1: Layer already exists
+73816d23f2f3: Layer already exists
+796e81d1aed1: Layer already exists
+48f39c1ca044: Layer already exists
+7f82bcd77a4b: Layer already exists
+e5e13b0c77cb: Layer already exists
+7ae7e09dbb66: Layer already exists
+a3ecf5a1df9e: Layer already exists
+latest: digest: sha256:02182221bb397dbd3b703664a38d39155e0f1a052507e7e86506d91989510c8c size: 1990
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (deploy)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+Welcome to Ubuntu 20.04.5 LTS (GNU/Linux 5.15.0-1019-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Mon Dec 12 11:42:28 UTC 2022
+
+  System load:  0.0               Processes:                112
+  Usage of /:   39.9% of 7.57GB   Users logged in:          1
+  Memory usage: 35%               IPv4 address for docker0: 172.17.0.1
+  Swap usage:   0%                IPv4 address for eth0:    10.0.1.228
+
+
+70 updates can be applied immediately.
+52 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+New release '22.04.1 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+node-app
+node-app
+481d4c245e50f0038d0eb27a83d7fa27b737c2d3c9df20f8b437893ee31559d8
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
