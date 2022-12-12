@@ -33,10 +33,9 @@
 - Created ECR repository.
 
 ![](Attachments/ECR.png)
-
 - I am using `AWS CLI` to authenticate `jeknins` and `app` hosts with ECR.
-### Steps
 
+### Steps
 - Installing `AWS CLI`
 
 ```bash

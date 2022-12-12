@@ -4,7 +4,7 @@
 - Containerised the sample code using this [dockerfile](sample-code/test-nodeapp-1-task/dockerfile) and exposed port 8080.
 - Pushed the [dockerfile](sample-code/test-nodeapp-1-task/dockerfile) to [GitHub repository](https://github.com/rohit-mohanta/course-project).
 
-## Sub-task 2
+## Sub-task 2 & Sub-task 3
 
 > I couldn't ssh into the `app host` from `jenkins host` to run jenkins jobs.
 > So I have used my `local system` as a jenkins agent. And then sshing into `app host` to run the steps.![](Attachments/local-agent.png)
@@ -28,4 +28,10 @@ ENDSSH
 ```
 
 - Stage 2: building docker image and pushing it to ECR repo. 
-- Stage 3: Deploying the container to `app host`
+- Stage 3: Checking if older image container is running and stop it, deploying the container to `app host`.
+
+![](Attachments/jenkins-pipeline.png)
+	Jenkins pipeline
+
+![](Attachments/app-deployment.png)
+	Node app is successfully running on **app host** (`http://rohit-456-alb-937651315.us-east-1.elb.amazonaws.com/app`).
