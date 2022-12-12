@@ -6,8 +6,6 @@
 
 ## Sub-task 2
 
-
-> [!NOTE] 
 > I couldn't ssh into the `app host` from `jenkins host` to run jenkins jobs.
 > So I have used my `local systme` as a jenkins agent. And then sshing into `app host` to run the steps.
 
