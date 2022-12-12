@@ -32,7 +32,7 @@
 
 - Created ECR repository.
 
-![[Pasted image 20221212114140.png]]
+![](Attachments/ECR.png)
 
 - I am using `AWS CLI` to authenticate `jeknins` and `app` hosts with ECR.
 ### Steps
@@ -40,11 +40,16 @@
 - Installing `AWS CLI`
 
 ```bash
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && sudo apt install unzip && sudo ./aws/install
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && sudo apt install unzip && unzip awscliv2.zip && sudo ./aws/install
 ```
 
+- Then `aws configure` to authenticate `aws-cli` with AWS account.
 - Authenticating the registry
 
 ```bash
-aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/e3u3y5v0
+aws ecr-public get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin public.ecr.aws/e3u3y5v0
 ```
+![](Attachments/aws-ecr.png)
+- Now, We can pull and push images to and from our ECR repo.
+
+![](Attachments/ECR-pull-push.png)
