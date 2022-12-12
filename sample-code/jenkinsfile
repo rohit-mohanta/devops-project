@@ -1,0 +1,46 @@
+pipeline {
+    agent {label "local"}
+    stages {
+        stage('pull') {
+            steps {
+		script {
+	 		sh '''#!/bin/bash
+				ssh -o "StrictHostKeyChecking no" app-host << ENDSSH
+				git clone https://github.com/rohit-mohanta/course-project.git
+			    ls -ltrh
+ENDSSH
+'''
+                }
+            }
+        }
+        
+        stage('buildS') {
+            steps {
+		script {
+	 		sh '''#!/bin/bash
+				ssh -o "StrictHostKeyChecking no" app-host << ENDSSH
+				cd course-project/test-nodeapp-1-task/
+				sudo docker build -f dockerfile -t node-app .
+				sudo docker tag node-app:latest public.ecr.aws/e3u3y5v0/course-project:latest
+			    sudo docker push public.ecr.aws/e3u3y5v0/course-project:latest
+ENDSSH
+'''
+                }
+            }
+        }
+
+        stage('deploy') {
+            steps {
+		script {
+	 		sh '''#!/bin/bash
+				ssh -o "StrictHostKeyChecking no" app-host << ENDSSH
+				sudo docker ps -q --filter "name=node-app" | grep -q . && sudo docker stop node-app && sudo docker rm -fv node-app
+                sudo docker run --name node-app -p 8080:8080 public.ecr.aws/e3u3y5v0/course-project:latest
+
+ENDSSH
+'''
+                }
+            }
+        }
+    }
+}
