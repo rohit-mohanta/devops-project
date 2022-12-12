@@ -4,7 +4,7 @@
 
 ![](Attachments/aws-cli.png)
 
-- S3 bucket as Terraform backend. Here is the terraform [config file. ](Terraform/state.tf)
+- S3 bucket as Terraform backend. Here is the terraform [config file](Terraform/state.tf).
 
 ## Sub-task 2 & Sub-task 3
 
@@ -41,4 +41,33 @@
 - I have set up the S3 bucket as backend to store the state using [state.tf](Terraform/state.tf) config file.
 - I have used http://ipv4.icanhazip.com/ API for getting IP to input in security groups accordingly.
 - ssh to private EC2 hosts is possible using the Proxy-jump feature. The `jenkins host` and `app host` are being provisioned in a private subnet and the `bastion host` is in public subnet.
-- ***Build the VPC diagram tomorrow***
+- I am using `ssh-config` file to store the information about EC2 hosts.
+
+```
+Host bastion-host
+HostName 54.89.177.211
+User ubuntu
+Port 22
+IdentityFile ~/.ssh/id_ed25519.pub
+IdentitiesOnly yes
+
+Host jenkins-host
+HostName 10.0.1.131
+User ubuntu
+Port 22
+IdentityFile ~/.ssh/id_ed25519.pub
+IdentitiesOnly yes
+ProxyJump bastion-host
+
+Host app-host
+HostName 10.0.1.32
+User ubuntu
+Port 22
+IdentityFile ~/.ssh/id_ed25519.pub
+IdentitiesOnly yes
+ProxyJump bastion-host
+```
+	After every `terraform apply`, I am just updating the IP addresses.
+
+- I have already authenticated my terminal with `aws cli` using environment variables `AWS_SECRET_ACCESS_KEY` and `AWS_ACCESS_KEY_ID`.
+- CIDRs, VPC & Subnet are easily configurable via [terraform.tfvars](Terraform/terraform.tfvars).
