@@ -22,7 +22,7 @@
 ## Sub-task 3
 
 - Accessing `jenkins host` via `bastion host` from local system.
-- Installing jenkins on `jenkins host` using [jenkins.sh](jenkins.sh) script I have written to automate the installation.
+- Installing jenkins on `jenkins host` using [jenkins.sh](Jenkins/jenkins.sh) script I have written to automate the installation.
 ![](Attachments/jenkins-install.png)
 - Accessing it via ALB endpoint `<alb dns>/jenkins` and installing recommended plugins.
 
